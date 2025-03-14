@@ -1,0 +1,29 @@
+﻿@model List<Faculties>
+<div class=" container">
+	<div class=" col-xl-12 col-md-12 col-sm12"> 
+		<table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Faculties faculties in Model)
+                {
+                    <tr>
+                        <td>@faculties.Id</td>
+                        <td>@faculties.Name</td>
+                        <td>@faculties.Correo</td>
+                        <td>@faculties.Description</td>
+                        <td>@(faculties.IsActive ? "Activo" : "Inactivo")</td>
+                    </tr>
+                
+                }
+            </tbody>
+        </table>
+	</div>
+</div>
