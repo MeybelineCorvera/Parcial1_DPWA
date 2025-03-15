@@ -58,5 +58,14 @@ namespace Parcial1_DPWA.Controllers
             }
             return View(model);
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Faculties faculties = _dbConn.Faculties.FirstOrDefault(row => row.Id == id) ?? new();
+            faculties.IsActive = false;
+            _dbConn.Faculties.Update(faculties);
+            _dbConn.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
