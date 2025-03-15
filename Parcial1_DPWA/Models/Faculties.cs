@@ -18,6 +18,8 @@ namespace Parcial1_DPWA.Models
         #region  Constructor
         public Faculties()
         {
+            IsActive = true;
+            Created = DateTime.Now;
 
         }
         public Faculties(string name, string correo, string description, int cantidadmaterias)

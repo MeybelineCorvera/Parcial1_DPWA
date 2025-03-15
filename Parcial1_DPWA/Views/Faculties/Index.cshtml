@@ -8,33 +8,54 @@
 	</ol>
 </nav>
 <div class=" container">
-    <div class="col-xl-12 col-md-12 col-sm-12 d-flex justify-content-start">
-		<a type="button" class="btn btn-primary" asp-action="Create" asp-controller="Faculties"><span class="fas fa-plus"></span> Agregar Facultad</a>
-	</div>
-	<div class=" col-xl-12 col-md-12 col-sm12"> 
-		<table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Descripción</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (Faculties faculties in Model)
-                {
-                    <tr>
-                        <td>@faculties.Id</td>
-                        <td>@faculties.Name</td>
-                        <td>@faculties.Correo</td>
-                        <td>@faculties.Description</td>
-                        <td>@(faculties.IsActive ? "Activo" : "Inactivo")</td>
-                    </tr>
-                
-                }
-            </tbody>
-        </table>
-	</div>
+    <div class="row">
+		<div class="col-xl-12 col-md-12 col-sm-12 d-flex justify-content-start">
+			<a type="button" class="btn btn-primary" asp-action="UpSert" asp-controller="Faculties"><span class="fas fa-plus"></span> Agregar Facultad</a>
+		</div>
+		<div class="col-xl-12 col-md-12 col-sm-12 mt-3"> 
+			<table class="table table-striped table-bordered table-hover shadow-sm">
+				<thead thead-dark>
+					<tr>
+						<th>Id</th>
+						<th>Nombre</th>
+						<th>Correo</th>
+						<th>Descripción</th>
+						<th>Estado</th>
+						<th>Acciones</th>
+					</tr>
+					</thead>
+				<tbody>
+					@{
+						foreach (Faculties faculties in Model)
+						{
+							<tr>
+								<td>@faculties.Id</td>
+								<td>@faculties.Name</td>
+								<td>@faculties.Correo</td>
+								<td>@faculties.Description</td>
+								<td>
+								    @if (faculties.IsActive)
+								    {
+									    <span class="badge bg-success">Activo</span>
+								    }
+								    else
+								    {
+									    <span class="badge bg-danger">Inactivo</span>
+								    }
+								</td>
+								<td>
+								    <a ype="button" class="btn btn-success" asp-action="View" asp asp-controller="Faculties" asp-route-id="@faculties.Id">
+								         <span class="fas fa-eye"></span>
+								    </a>
+								    <a ype="button" class="btn btn-warning" asp-action="UpSert" asp asp-controller="Faculties" asp-route-id="@faculties.Id">
+								         <span class="fas fa-pencil"></span>
+								    </a>
+							    </td>
+							</tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

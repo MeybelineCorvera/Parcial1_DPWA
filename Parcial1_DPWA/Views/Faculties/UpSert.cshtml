@@ -12,7 +12,7 @@
     </ol>
 </nav>
 
-<form asp-action="Create" asp-controller="Faculties" method="POST">
+<form asp-action="UpSert" asp-controller="Faculties" method="POST">
     <div asp-validation-summary="All" class="alert alert-danger">
         <i class="bi bi-exclamation-triangle-fill"></i>
     </div>
@@ -20,27 +20,24 @@
 
 
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">
-            <span class="fas fa-user"></span>
-        </span>
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-university"></i></span>
         <input type="text" class="form-control" asp-for="Name" placeholder="Name" aria-label="Nombre">
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
         <input type="text" class="form-control" asp-for="Correo" placeholder="Correo" aria-label="Correo">
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-file-lines"></i></span>
         <input type="text" class="form-control" asp-for="Description" placeholder="Description" aria-label="Descripccion">
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1"><span class="fas fa-hashtag"></span></span>
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-hashtag"></i></span>
         <input type="number" class="form-control" asp-for="CantidadCarreras" value="@((Model.CantidadCarreras == 0) ? string.Empty : Model.CantidadCarreras)" placeholder="Cantidad de Carreras" aria-label="CantidadCarreras">
     </div>
-    <div class="mb-3">
-        <label asp-for="CreatedBy" class="form-label">Creado por</label>
-        <input asp-for="CreatedBy" class="form-control" />
-        <span asp-validation-for="CreatedBy" class="text-danger"></span>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+        <input type="text" class="form-control" asp-for="CreatedBy" placeholder="Creado por" aria-label="CreatedBy">
     </div>
     <button class="btn btn-success" type="submit"><span class="fas fade save"></span>Guardar Informacion</button>
 </form>

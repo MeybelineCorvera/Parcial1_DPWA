@@ -20,21 +20,41 @@ namespace Parcial1_DPWA.Controllers
             List<Faculties> faculties = _dbConn.Faculties.ToList();
             return View(faculties);
         }
-        public IActionResult Create()
+        public IActionResult UpSert(int id)
         {
-            Faculties faculties = new();
-            return View(faculties);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Faculties model)
-        {
-            if (ModelState.IsValid)
+            if (id == 0)
             {
-                _dbConn.Faculties.Add(model);
-                _dbConn.SaveChanges();
-                return RedirectToAction("Index");
+                //REGISTRO NUEVO
+                Faculties faculties = new();
+                return View(faculties);
+            }
+            else
+            {
+                //REGISTRO EXISTENTE
+                Faculties faculties = _dbConn.Faculties.FirstOrDefault(row => row.Id == id) ?? new();
+                return View(faculties);
+            }
+        }
+        [HttpPost]
+        public IActionResult UpSert(Faculties model)
+        {
+            if (model.Id == 0)
+            {
+                if (ModelState.IsValid)
+                {
+                    _dbConn.Faculties.Add(model);
+                    _dbConn.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    _dbConn.Faculties.Update(model);
+                    _dbConn.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(model);
         }
