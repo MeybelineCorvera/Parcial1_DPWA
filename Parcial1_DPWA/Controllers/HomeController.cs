@@ -18,7 +18,7 @@ namespace Parcial1_DPWA.Controllers
 
         public IActionResult Index()
         {
-            Faculties faculties1 = new("Arquitectura e Ingenieria", "ArquitecturaIngenieria@univo.com", "La FIA de la UNIVO ofrece una formación en ingeniería y arquitectura. La carrera de Arquitectura dura 5 años y consta de 50 asignaturas. ");
+            Faculties faculties1 = new("Arquitectura e Ingenieria", "ArquitecturaIngenieria@univo.com", "La FIA de la UNIVO ofrece una formación en ingeniería y arquitectura. La carrera de Arquitectura dura 5 años y consta de 50 asignaturas. ", 8);
             faculties1.ToggleStatus();
             return View();
         }

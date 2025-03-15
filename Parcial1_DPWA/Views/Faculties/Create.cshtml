@@ -1,0 +1,46 @@
+﻿@model Faculties;
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a asp-controller="Faculties" asp-action="Index">Index</a>
+        </li>
+        <li class="breadcrumb-item">Agregar nuevo registro</li>
+    </ol>
+</nav>
+
+<form asp-action="Create" asp-controller="Faculties" method="POST">
+    <div asp-validation-summary="All" class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+    <input type="hidden" asp-for="Id" value="@Model.Id" placeholder="Id" aria-label="Id">
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+            <span class="fas fa-user"></span>
+        </span>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Name" aria-label="Nombre">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="text" class="form-control" asp-for="Correo" placeholder="Correo" aria-label="Correo">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user"></span></span>
+        <input type="text" class="form-control" asp-for="Description" placeholder="Description" aria-label="Descripccion">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-hashtag"></span></span>
+        <input type="number" class="form-control" asp-for="CantidadCarreras" value="@((Model.CantidadCarreras == 0) ? string.Empty : Model.CantidadCarreras)" placeholder="Cantidad de Carreras" aria-label="CantidadCarreras">
+    </div>
+    <div class="mb-3">
+        <label asp-for="CreatedBy" class="form-label">Creado por</label>
+        <input asp-for="CreatedBy" class="form-control" />
+        <span asp-validation-for="CreatedBy" class="text-danger"></span>
+    </div>
+    <button class="btn btn-success" type="submit"><span class="fas fade save"></span>Guardar Informacion</button>
+</form>
